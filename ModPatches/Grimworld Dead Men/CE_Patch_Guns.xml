@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!--===== Melee Attacks for Guns =====-->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[
+		defName="GW_HOI_DM_Gun_Lucius"
+		]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>barrel</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>5</power>
+					<cooldownTime>2.02</cooldownTime>
+					<armorPenetrationBlunt>1.63</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>stock</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>1.55</cooldownTime>
+					<chanceFactor>1.5</chanceFactor>
+					<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<!--===== Guns =====-->
+	
+	<!-- === Lucius MKI === -->
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>GW_HOI_DM_Gun_Lucius</defName>
+		<statBases>
+			<Mass>3.80</Mass>
+			<Bulk>16.00</Bulk>
+			<SwayFactor>1.35</SwayFactor>
+			<ShotSpread>0.06</ShotSpread>
+			<SightsEfficiency>1.0</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<hasStandardCommand>True</hasStandardCommand>
+			<defaultProjectile>Bullet_Lasgun_HellGun</defaultProjectile>
+			<warmupTime>0.75</warmupTime>
+			<range>70</range>
+			<soundCast>VWE_LaserShot_Rifle</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+			<muzzleFlashScale>12</muzzleFlashScale>
+		</Properties>
+		<AmmoUser>
+			<magazineSize>80</magazineSize>
+			<reloadTime>4</reloadTime>
+			<ammoSet>AmmoSet_Lasgun_HellGun</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aiAimMode>AimedShot</aiAimMode>
+		</FireModes>
+	</Operation>
