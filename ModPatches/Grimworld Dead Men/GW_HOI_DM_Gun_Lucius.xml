@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>GrimWorld 40,000 - Dead Men</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="GW_HOI_DM_Gun_Lucius"]/tools</xpath>
+          <value>
+            <tools>
+              <li Class="CombatExtended.ToolCE">
+                <label>stock</label>
+                <capacities>
+                  <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+              </li>
+              <li Class="CombatExtended.ToolCE">
+                <label>barrel</label>
+                <capacities>
+                  <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+              </li>
+              <li Class="CombatExtended.ToolCE">
+                <label>bayonet</label>
+                <capacities>
+                  <li>Poke</li>
+                </capacities>
+                <armorPenetrationSharp>3</armorPenetrationSharp>
+                <power>16</power>
+                <cooldownTime>2</cooldownTime>
+              </li>
+            </tools>
+          </value>
+        </li>
+        <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+          <defName>GW_HOI_DM_Gun_Lucius</defName>
+          <statBases>
+            <RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+            <Bulk>10.03</Bulk>
+            <TicksBetweenBurstShots>4</TicksBetweenBurstShots>
+            <BurstShotCount>0.06</BurstShotCount>
+            <SightsEfficiency>1</SightsEfficiency>
+            <SwayFactor>1.33</SwayFactor>
+            <ShotSpread>0.07</ShotSpread>
+            <MagazineCapacity>80</MagazineCapacity>
+            <ReloadSpeed>4</ReloadSpeed>
+          </statBases>
+          <Properties>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>True</hasStandardCommand>
+            <warmupTime>0.75</warmupTime>
+            <range>70</range>
+            <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+            <muzzleFlashScale>12</muzzleFlashScale>
+            <defaultProjectile>Bullet_Lasgun_HellGun</defaultProjectile>
+            <soundCast>GW_AM_Gun_Kantrael</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+          </Properties>
+          <AmmoUser>
+            <magazineSize>80</magazineSize>
+            <ammoSet>AmmoSet_Lasgun_HellGun</ammoSet>
+          </AmmoUser>
+          <FireModes>
+            <aimedBurstShotCount>1</aimedBurstShotCount>
+          </FireModes>
+          <weaponTags />
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="GW_HOI_DM_Gun_Lucius"]/comps</xpath>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="GW_HOI_DM_Gun_Lucius"]</xpath>
+            <value>
+              <comps />
+            </value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
